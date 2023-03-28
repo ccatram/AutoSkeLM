@@ -3,7 +3,6 @@ Automated skeletal phenotyping for 2D landmark-based measurements
 --
 
 This repo contains the code/scripts for the method presented in “Developing an automated skeletal phenotyping pipeline to leverage biobank-level medical imaging databases” by Cataldo-Ramirez et al. (2023). See Cataldo-Ramirez et al. (2023) for a detailed discussion and recommended use of this automated phenotyping pipeline. 
-[CITATION FORTHCOMING]
 
 Objective/Purpose: To automate the extraction of skeletal measurements from biobank-level samples of whole body DXA images.
 
@@ -96,7 +95,7 @@ Avants, B. B., Johnson, H. J., & Tustison, N. J. (2015). Neuroinformatics and th
 
 Avants, B. B., Tustison, N., & Song, G. (2009). Advanced normalization tools (ANTS). Insight j, 2(365), 1-35.
 
-[CITATION FORTHCOMING]
+Cataldo-Ramirez, C. C., Haddad, D., Amenta, N., & Weaver, T. D. (2023). Developing an automated skeletal phenotyping pipeline to leverage biobank-level medical imaging databases. American Journal of Biological Anthropology, 1–13. https://doi.org/10.1002/ajpa.24736
 
 Kassambara A, Mundt F (2020). _factoextra: Extract and Visualize the Results of Multivariate Data Analyses_. R package version 1.0.7, <https://CRAN.R-project.org/package=factoextra>. 
 
