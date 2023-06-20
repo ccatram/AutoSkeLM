@@ -1,6 +1,4 @@
---
-Automated skeletal phenotyping for 2D landmark-based measurements
---
+# Automated skeletal phenotyping for 2D landmark-based measurements
 
 This repo contains the code/scripts for the method presented in “Developing an automated skeletal phenotyping pipeline to leverage biobank-level medical imaging databases” by Cataldo-Ramirez et al. (2023). See Cataldo-Ramirez et al. (2023) for a detailed discussion and recommended use of this automated phenotyping pipeline. 
 
