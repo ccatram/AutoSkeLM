@@ -5,6 +5,7 @@ This repo contains the code/scripts for the method presented in “Developing an
 **Objective/Purpose:** To automate the extraction of skeletal measurements from biobank-level samples of whole body DXA images.
 
 **Dependant software and packages:**
+
 Advanced Normalization Tools (Avants, Tustison, and Song, 2009; Avants, Johnson, and Tustison, 2015): https://github.com/ANTsX/ANTs
 MATLAB: https://www.mathworks.com/
 MATLAB add-ons:
@@ -13,6 +14,7 @@ Elliptic fourier for shape analysis: https://www.mathworks.com/matlabcentral/fil
 shape: https://www.maths.nottingham.ac.uk/plp/pmzspp/shape.php
 
 **Optional software and packages:**
+
 ITK-SNAP: http://www.itksnap.org/pmwiki/pmwiki.php
 R packages:
 factoextra: https://CRAN.R-project.org/package=factoextra
