@@ -9,24 +9,18 @@ Advanced Normalization Tools (Avants, Tustison, and Song, 2009; Avants, Johnson,
 MATLAB: https://www.mathworks.com/
 
 MATLAB add-ons:
-
-dicm2nii: https://github.com/xiangruili/dicm2nii
-
-Elliptic fourier for shape analysis: https://www.mathworks.com/matlabcentral/fileexchange/32800-elliptic-fourier-for-shape-analysis
-
-shape: https://www.maths.nottingham.ac.uk/plp/pmzspp/shape.php
+* dicm2nii: https://github.com/xiangruili/dicm2nii
+* Elliptic fourier for shape analysis: https://www.mathworks.com/matlabcentral/fileexchange/32800-elliptic-fourier-for-shape-analysis
+* shape: https://www.maths.nottingham.ac.uk/plp/pmzspp/shape.php
 
 **Optional software and packages:**
 
 ITK-SNAP: http://www.itksnap.org/pmwiki/pmwiki.php
 
 R packages:
-
-factoextra: https://CRAN.R-project.org/package=factoextra
-
-FactoMineR: https://cran.r-project.org/web/packages/FactoMineR/index.html
-
-ImageJ: https://imagej.nih.gov/ij/download.html
+* factoextra: https://CRAN.R-project.org/package=factoextra
+* FactoMineR: https://cran.r-project.org/web/packages/FactoMineR/index.html
+* ImageJ: https://imagej.nih.gov/ij/download.html
 
 
 # Pipeline Overview
