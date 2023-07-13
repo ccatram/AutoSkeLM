@@ -37,7 +37,9 @@ The automated phenotyping pipeline can be broken down into four main sections, d
 File conversion (DICOM to NIfTI): “*fileconv.m*”
 Requires *dicm2nii* add-on package
 Image normalization (background color and contrast matching): “*normalize.m*”
-After converting images to .nii, select an image and manually modify the contrast and brightness in your image editor of choice. The image should be adjusted to minimize soft tissue visibility and maximize bone visibility. See Cataldo-Ramirez et al., 2023, Fig. 4 for an example. Save this image as a “*contrastatlas.nii*” file in the working directory for use with “normalize.m”.
+
+After converting images to .nii, select an image and manually modify the contrast and brightness in your image editor of choice. The image should be adjusted to minimize soft tissue visibility and maximize bone visibility. See Cataldo-Ramirez et al., 2023, Fig. 4 for an example. Save this image as a “*contrastatlas.nii*” file in the working directory for use with “*normalize.m*”.
+
 Initial review (grid output preprocessed images): “*gridout.m*”
 
 Outputs .png figure(s) with up to 100 images (per figure) in a 10 x 10 grid. Can be used to quickly review images after preprocessing. 
@@ -45,51 +47,65 @@ Outputs .png figure(s) with up to 100 images (per figure) in a 10 x 10 grid. Can
 **Atlas selection and manual landmarking (2)**
 
 Body outline extraction (binarize and outline) and shape quantification (EFA): “*shapevar.m*”
-Requires MATLAB add-on “*Elliptic fourier for shape analysis*”
-. It’s recommended to plot the PC scores at this point to identify outliers that may be incorrectly driving the first two axes of variation, and either remove or redo the outline extraction process on them. This can happen when the wrong outline is extracted, reflecting a shape inconsistent with the general human form.
+
+Requires MATLAB add-on “*Elliptic fourier for shape analysis*”. It’s recommended to plot the PC scores at this point to identify outliers that may be incorrectly driving the first two axes of variation, and either remove or redo the outline extraction process on them. This can happen when the wrong outline is extracted, reflecting a shape inconsistent with the general human form.
 
 Outputs “*ForPCAhcoef.txt*” file (the input needed for the PCA)
+
 Shape variance quantification (PCA and hierarchical clustering) and atlas selection (identifying images to manually landmark)
 Use the harmonic coefficients as input for a principal component analysis and perform hierarchical clustering on the resulting PC scores. Visualize the clusters to identify images that represent cluster means and edges (these will be your atlases– start with a selection of 3 to 4 images per cluster). 
 
 We used R packages *FactoMineR* and *factoextra* to identify clusters using the first 3 PCs. Cluster visualization can be created using the *fvizcluster()* function and the more typical individuals of each cluster can be found by extracting $desc.ind from the *HCPC()* function output.
-Manual landmarking (selecting skeletal measurements of interest and exporting image segmentation files)
-Landmark the atlases in your preferred image processing software, and save each image-landmark set in .nii.gz format (i.e., the landmarks should be a segmentation layer). We used ITK-SNAP as it is already integrated for use with ANTs.
+
+Manual landmarking (selecting skeletal measurements of interest and exporting image segmentation files):
+
+Landmark the atlases in your preferred image processing software, and save each image-landmark set in *.nii.gz* format (i.e., the landmarks should be a segmentation layer). We used ITK-SNAP as it is already integrated for use with ANTs.
 
 **Advanced Normalization Tools image registration and landmark propagation (3)**
 Scripts: “*modifiedANTs.sh*” and “*modifiedANTs.py*”
 
-File naming conventions: Current file naming conventions are based on the default output of UKB .dcm file header info extracted by the MATLAB add-on *dicm2nii*. Modify this section for use with your naming conventions.
+File naming conventions: Current file naming conventions are based on the default output of UKB *.dcm* file header info extracted by the MATLAB add-on *dicm2nii*. Modify this section for use with your naming conventions.
 
 Directory structure: The working directory where the script is run must contain an /Images_nii folder (containing all .nii files), an /Images_nii_gz folder (containing all .nii.gz atlas image files), and an /Out folder (that will act as the output directory).
 
 Inputs:
-Pre-processed .nii file for each image in dataset
-.nii.gz file for each manually landmarked atlas image
+
+Pre-processed *.nii* file for each image in dataset
+
+*.nii.gz* file for each manually landmarked atlas image
 
 Outputs:
+
 A folder for each atlas image containing subfolders for the output of each moving image
+
 Moving image subfolders containing:
-Warp and inverse-warp .nii.gz files (used in the ANTs registration and landmark propagation call)
-Warped.nii.gz file for visualizing the deformations
-Propagated landmark coordinate .csv file
+
+Warp and inverse-warp *.nii.gz* files (used in the ANTs registration and landmark propagation call)
+
+*Warped.nii.gz* file for visualizing the deformations
+
+Propagated landmark coordinate *.csv* file
 
 
 **Post-propagation quality control (4)**
 
 Script: “*choosepropagationssubset.m*”, which calls functions defined in “*calccentsize.m*”, “*calccombs.m*”, and “*calctripletdist.m*”, and the GPA function of the “*shape*” add-on to Matlab (see above).
 
-File naming conventions: The files containing the propagated landmark coordinates are assumed to have filenames of the form “propfixed_” followed by the fixed image name followed by “_moving_” followed by the moving image name (e.g., “propfixed_EX_4M_PL_E1_moving_T3_ST_12_34”); and be .csv files with the coordinate data structured as output by ANTs in the previous step.
+File naming conventions: The files containing the propagated landmark coordinates are assumed to have filenames of the form “*propfixed_*” followed by the fixed image name followed by “_moving_” followed by the moving image name (e.g., “propfixed_EX_4M_PL_E1_moving_T3_ST_12_34”); and be *.csv* files with the coordinate data structured as output by ANTs in the previous step.
 
-Directory structure: Five directories need to be specified in the script: 1) where the shape analysis function m-files are found; 2) where the “calc_centsize.m”, “calc_combs.m”, and “calc_tripletdist.m” files are found; 3) where the atlas landmark files are found; 4) where the moving image propagated landmark files are found; and 5) where the output should be saved.
+Directory structure: Five directories need to be specified in the script: 1) where the shape analysis function m-files are found; 2) where the “*calc_centsize.m*”, “*calc_combs.m*”, and “*calc_tripletdist.m*” files are found; 3) where the atlas landmark files are found; 4) where the moving image propagated landmark files are found; and 5) where the output should be saved.
 
 Inputs:
-Multiple propagated landmark coordinate .csv files for each moving image (e.g., 10 different propagations for each moving image)
-Landmark coordinate .csv files for the atlases
+
+Multiple propagated landmark coordinate *.csv* files for each moving image (e.g., 10 different propagations for each moving image)
+
+Landmark coordinate *.csv* files for the atlases
 
 Outputs:
-Mean (average) landmark coordinates for the propagated landmarks from three different atlases for all of the moving images that pass the QC steps. These coordinates are saved in files with names starting with “propAvg_moving_”.
-“summary.csv” file containing information about the QC
+
+Mean (average) landmark coordinates for the propagated landmarks from three different atlases for all of the moving images that pass the QC steps. These coordinates are saved in files with names starting with “*propAvg_moving_*”.
+
+“*summary.csv*” file containing information about the QC
 
 
 
