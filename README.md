@@ -10,6 +10,7 @@ MATLAB: https://www.mathworks.com/
 
 MATLAB add-ons:
 * dicm2nii: https://github.com/xiangruili/dicm2nii
+* Freeman Chain Code: https://www.mathworks.com/matlabcentral/fileexchange/29518-freeman-chain-code
 * Elliptic fourier for shape analysis: https://www.mathworks.com/matlabcentral/fileexchange/32800-elliptic-fourier-for-shape-analysis
 * shape: https://www.maths.nottingham.ac.uk/plp/pmzspp/shape.php
 
@@ -17,10 +18,11 @@ MATLAB add-ons:
 
 ITK-SNAP: http://www.itksnap.org/pmwiki/pmwiki.php
 
+ImageJ: https://imagej.nih.gov/ij/download.html
+
 R packages:
 * factoextra: https://CRAN.R-project.org/package=factoextra
 * FactoMineR: https://cran.r-project.org/web/packages/FactoMineR/index.html
-* ImageJ: https://imagej.nih.gov/ij/download.html
 
 
 # Pipeline Overview
@@ -114,6 +116,8 @@ Mean (average) landmark coordinates for the propagated landmarks from three diff
 
 
 # Citations:
+Alessandro Mannini (2024). Freeman Chain Code (https://www.mathworks.com/matlabcentral/fileexchange/29518-freeman-chain-code), MATLAB Central File Exchange. Retrieved January 3, 2024.
+
 Avants, B. B., Johnson, H. J., & Tustison, N. J. (2015). Neuroinformatics and the insight toolkit. Frontiers in Neuroinformatics, 9, 5. 
 
 Avants, B. B., Tustison, N., & Song, G. (2009). Advanced normalization tools (ANTS). Insight j, 2(365), 1-35.
